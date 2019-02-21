@@ -1,7 +1,13 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify, redirect
 from products import popularProducts
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return redirect("/index.html", code=302)
+
 
 @app.route('/<path:filename>')
 def download_file(filename):
