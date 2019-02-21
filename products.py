@@ -7,3 +7,11 @@ def getPopularProducts():
         { "_id": "8570", "brand": "8x4", "category": "Gezond & verzorging", "deeplink": "https://www.opisopvoordeelshop.nl/8x4-unity-150-ml"},
         { "_id": "22309", "brand": "Agfa", "category": "Elektronica & media", "deeplink": "https://www.opisopvoordeelshop.nl/afgaphoto-alkaline-power-batterijen-aa-4-stuks"}
     ]
+
+def getPersonalProducts(session):
+    print("Recommendations for session: {}".format(session['_id']))
+
+    return [
+        {"_id": "23978", "brand": "8x4", "category": "Gezond & verzorging", "deeplink": "https://www.opisopvoordeelshop.nl/8x4-men-men-beast-deospray-150ml"},
+        {"_id": "22309", "brand": "Agfa", "category": "Elektronica & media", "deeplink": "https://www.opisopvoordeelshop.nl/afgaphoto-alkaline-power-batterijen-aa-4-stuks"}
+    ]

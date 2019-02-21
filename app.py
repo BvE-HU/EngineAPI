@@ -1,5 +1,5 @@
-from flask import Flask, send_from_directory, jsonify, redirect
-from products import getPopularProducts
+from flask import Flask, send_from_directory, jsonify, redirect, request
+from products import getPopularProducts, getPersonalProducts
 
 app = Flask(__name__)
 
@@ -17,6 +17,12 @@ def download_file(filename):
 @app.route('/popularproducts')
 def popularproducts():
     return jsonify(getPopularProducts())
+
+
+@app.route('/personalproducts', methods=['POST'])
+def personalproducts():
+    sessiondata = request.json
+    return jsonify(getPersonalProducts(sessiondata))
 
 
 if __name__ == '__main__':

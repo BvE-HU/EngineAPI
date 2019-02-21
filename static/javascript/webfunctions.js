@@ -1,3 +1,17 @@
+function loadPersonalProducts() {
+    sessionData = {
+        _id : document.forms['session']._id.value,
+        buid : document.forms['session'].buid.value
+    }
+
+    fetch('/personalproducts', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(sessionData) })
+        .then(response => response.json())
+        .then(products_json => showProductsInTable(products_json));
+}
+
 function loadPopularProducts() {
     fetch('/popularproducts')
         .then(response => response.json())
