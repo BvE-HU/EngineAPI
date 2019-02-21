@@ -1,9 +1,12 @@
 <!doctype html>
 
 <html>
+
 <meta charset="UTF-8">
 <title>Popular Products</title>
-<body>
+<script src="javascript/webfunctions.js"></script>
+
+<body onload="loadProducts()">
     <h3>Popular Products:</h3>
 
     <table id="products" style="text-align: left">
@@ -14,42 +17,6 @@
             <th>Deeplink</th>
         </tr>
     </table>
-
-    <script type="application/javascript">
-        fetch('/productservice')
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(myJson) {
-                // console.log(myJson);
-                for (product of myJson) {
-                    var row = document.createElement("tr");
-
-                    var td_id = document.createElement("td");
-                    td_id.appendChild(document.createTextNode(product['_id']));
-                    row.appendChild(td_id);
-
-                    var td_brand = document.createElement("td");
-                    td_brand.appendChild(document.createTextNode(product['brand']));
-                    row.appendChild(td_brand);
-
-                    var td_category = document.createElement("td");
-                    td_category.appendChild(document.createTextNode(product['category']));
-                    row.appendChild(td_category);
-
-                    var td_deeplink = document.createElement("td");
-                    var a_deeplink = document.createElement("a");
-                    a_deeplink.appendChild(document.createTextNode(product['deeplink']))
-                    a_deeplink.setAttribute("href", product['deeplink']);
-                    a_deeplink.setAttribute("target", "blank");
-                    td_deeplink.appendChild(a_deeplink);
-                    row.appendChild(td_deeplink);
-
-                    document.querySelector("#products").appendChild(row);
-                }
-
-            });
-    </script>
 </body>
 
 </html>
