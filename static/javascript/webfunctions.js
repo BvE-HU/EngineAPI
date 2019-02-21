@@ -1,21 +1,20 @@
-function loadProducts() {
-    fetch('/productservice/')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(myJson) {
-            // console.log(myJson);
-            for (product of myJson) {
-                var row = element("tr",
-                    element("td", text(product['_id'])),
-                    element("td", text(product['brand'])),
-                    element("td", text(product['category'])),
-                    element("td", link(product['deeplink'], product['deeplink']))
-                )
+function loadPopularProducts() {
+    fetch('/popularproducts')
+        .then(response => response.json())
+        .then(products_json => showProductsInTable(products_json));
+}
 
-                document.querySelector("#products").appendChild(row);
-            }
-        });
+function showProductsInTable(products) {
+    for (product of products) {
+        var row = element("tr",
+            element("td", text(product['_id'])),
+            element("td", text(product['brand'])),
+            element("td", text(product['category'])),
+            element("td", link(product['deeplink'], product['deeplink']))
+        )
+
+        document.querySelector("#products").appendChild(row);
+    }
 }
 
 function element(name, ...childs) {

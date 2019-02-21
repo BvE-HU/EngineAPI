@@ -1,4 +1,4 @@
-def popularProducts():
+def getPopularProducts():
     return [
         { "_id": "23978", "brand": "8x4", "category": "Gezond & verzorging", "deeplink": "https://www.opisopvoordeelshop.nl/8x4-men-men-beast-deospray-150ml" },
         { "_id": "7225", "brand": "8x4", "category": "Gezond & verzorging", "deeplink": "https://www.opisopvoordeelshop.nl/8x4-heavenly-deospray-150ml" },

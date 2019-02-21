@@ -1,5 +1,5 @@
 from flask import Flask, send_from_directory, jsonify, redirect
-from products import popularProducts
+from products import getPopularProducts
 
 app = Flask(__name__)
 
@@ -14,9 +14,9 @@ def download_file(filename):
     return send_from_directory('static', filename, as_attachment=False)
 
 
-@app.route('/productservice/')
-def productservice():
-    return jsonify(popularProducts())
+@app.route('/popularproducts')
+def popularproducts():
+    return jsonify(getPopularProducts())
 
 
 if __name__ == '__main__':
